@@ -1,0 +1,20 @@
+{
+  "name": "playwright-agent-ts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playwright + TypeScript project for testing AI-agent-based workflows (AI as the system under test).",
+  "scripts": {
+    "test": "playwright test",
+    "test:offline": "playwright test tests/unit-evaluator.spec.ts tests/agent-mocking.spec.ts",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report",
+    "allure:report": "allure generate allure-results --clean -o allure-report && allure open allure-report",
+    "kpi": "node scripts/kpi-report.js --pw test-results/results.json --out kpis-out"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.0",
+    "@types/node": "^20.14.0",
+    "allure-playwright": "^3.0.4",
+    "typescript": "^5.5.0"
+  }
+}
