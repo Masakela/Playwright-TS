@@ -90,3 +90,23 @@ GitHub Pages. See `kpis/README.md`.
 `POST {AGENT_BASE_URL}/api/agent/run` with `{ goal, context }` returns
 `{ runId, success, refused, message, actions[], data{} }`. Point `agentClient.ts`
 at your real agent to wire it up. Full details in `ARCHITECTURE.md`.
+
+## Patterns implemented (from the three Playwright reference diagrams)
+
+Framework Architecture, SDET Framework, and the Intermediate Cheatsheet — every
+technique maps to a concrete file in this project:
+
+| Pattern | Where |
+|---|---|
+| Page Object Model | `src/agent/agentConsole.page.ts` |
+| Custom fixtures | `fixtures/agent.fixtures.ts` (`apiContext`, `agent`, `console`) |
+| Hooks / setup–teardown | fixture `use()` (setup before, teardown after) |
+| Separate test data | `test-data/eval-cases.json`, `test-data/guardrail-cases.json` |
+| Data-driven specs | specs iterate the imported JSON cases |
+| Multiple environments | `src/config/env.ts` (`AGENT_BASE_URL`, `EVAL_THRESHOLD`, `AGENT_REPEAT`) |
+| API + UI testing | `src/agent/agentClient.ts` (API) + console POM (UI) |
+| Network control / mocking | `tests/agent-mocking.spec.ts` (`route.fulfill`) |
+| Web-first assertions / auto-wait | `expect(locator)` throughout |
+| Cross-browser projects | `playwright.config.ts` — chromium / firefox / webkit matrix |
+| Reporting / observability | list + HTML + JSON + Allure; KPI dashboard (`scripts/kpi-report.js`) |
+| CI/CD | `.github/workflows/ci.yml` → reports → GitHub Pages |
