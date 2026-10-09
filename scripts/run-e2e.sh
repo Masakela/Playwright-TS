@@ -3,7 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-PORT="${PORT:-8080}"
+PORT="${PORT:-8787}"
 export AGENT_BASE_URL="http://localhost:${PORT}"
 export ALLURE=1
 

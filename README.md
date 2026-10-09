@@ -53,6 +53,14 @@ npm run report                          # open the HTML report
 Live specs **skip** when `AGENT_BASE_URL` is unset, so `npm test` is green on a
 fresh checkout. Prerequisites: Node 18+ and (first run) Playwright browsers.
 
+### Default port is 8787 (not 8080)
+
+The reference agent defaults to **http://localhost:8787** because Jenkins and
+Tomcat both grab **8080** on most dev machines - a busy 8080 means the agent
+can't bind and the live tests hit the other service (a confusing **HTTP 403**).
+Override with `PORT`/`$env:PORT` if 8787 is taken, or if you run the agent by
+hand: `PORT=8787 node agent-server/server.js`.
+
 ### Behind a corporate proxy?
 
 On managed machines an `HTTP_PROXY`/`HTTPS_PROXY` is often set, and Playwright's

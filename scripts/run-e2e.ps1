@@ -2,7 +2,7 @@
 $ErrorActionPreference = "Stop"
 Set-Location (Join-Path $PSScriptRoot "..")
 
-$port = if ($env:PORT) { $env:PORT } else { "8080" }
+$port = if ($env:PORT) { $env:PORT } else { "8787" }
 $base = "http://localhost:$port"
 $env:AGENT_BASE_URL = $base
 $env:ALLURE = "1"; $env:PORT = $port
