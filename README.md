@@ -53,6 +53,19 @@ npm run report                          # open the HTML report
 Live specs **skip** when `AGENT_BASE_URL` is unset, so `npm test` is green on a
 fresh checkout. Prerequisites: Node 18+ and (first run) Playwright browsers.
 
+### Behind a corporate proxy?
+
+On managed machines an `HTTP_PROXY`/`HTTPS_PROXY` is often set, and Playwright's
+request context will route the **localhost** agent call through it - the proxy then
+answers **HTTP 403** and every live spec fails. The project guards against this:
+`src/config/env.ts` adds `localhost`/`127.0.0.1`/`::1` to `NO_PROXY` whenever the
+agent URL is local, and the `run-e2e` scripts do the same. If you invoke Playwright
+some other way and still see a 403, set it yourself first:
+
+```bash
+export NO_PROXY=localhost,127.0.0.1,::1   # PowerShell: $env:NO_PROXY="localhost,127.0.0.1,::1"
+```
+
 ## KPIs
 
 After a run, build the stakeholder dashboard:
