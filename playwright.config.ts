@@ -5,12 +5,14 @@ import { defineConfig, devices, type ReporterDescription } from '@playwright/tes
 // video, HTML report. Projects (cheatsheet #10): one suite, three browser engines.
 const BASE_URL = process.env.AGENT_BASE_URL || 'https://agent.local';
 
-// Reporters: list + HTML always; JSON (for the KPI script) always; Allure only when
-// ALLURE=1 so local `npm test` works even without allure-playwright installed.
+// Reporters: list + HTML always; JSON (for the KPI script) always; JUnit (for the
+// result importer: Xray/Zephyr/TestRail) always; Allure only when ALLURE=1 so local
+// `npm test` works even without allure-playwright installed.
 const reporters: ReporterDescription[] = [
   ['list'],
   ['html', { open: 'never' }],
   ['json', { outputFile: 'test-results/results.json' }],
+  ['junit', { outputFile: 'test-results/junit.xml' }],
 ];
 if (process.env.ALLURE) {
   reporters.push(['allure-playwright', { resultsDir: 'allure-results' }]);

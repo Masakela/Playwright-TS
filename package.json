@@ -9,7 +9,9 @@
     "test:ui": "playwright test --ui",
     "report": "playwright show-report",
     "allure:report": "allure generate allure-results --clean -o allure-report && allure open allure-report",
-    "kpi": "node scripts/kpi-report.js --pw test-results/results.json --out kpis-out"
+    "kpi": "node scripts/kpi-report.js --pw test-results/results.json --out kpis-out",
+    "import:dry": "node scripts/import-results.js xray --junit test-results/junit.xml --dry-run",
+    "import:xray": "node scripts/import-results.js xray --junit test-results/junit.xml"
   },
   "devDependencies": {
     "@playwright/test": "^1.47.0",

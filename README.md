@@ -110,3 +110,17 @@ technique maps to a concrete file in this project:
 | Cross-browser projects | `playwright.config.ts` — chromium / firefox / webkit matrix |
 | Reporting / observability | list + HTML + JSON + Allure; KPI dashboard (`scripts/kpi-report.js`) |
 | CI/CD | `.github/workflows/ci.yml` → reports → GitHub Pages |
+
+## Integrations — test management & defect tracking
+
+This skeleton is **integration-ready**: after a run it can push JUnit results into
+**Jira/Xray**, **Zephyr Scale**, or **TestRail**, and open **Jira defects** for
+failures — via a zero-dependency script, `scripts/import-results.js`. Full setup is
+in **INTEGRATIONS.md**; variables are listed in `.env.example`.
+
+- **Plug-and-play:** the CI import step is gated on the `XRAY_CLIENT_ID` secret, so it
+  is skipped and the build stays green until a tool is configured. No accounts or SDKs
+  are needed to use the rest of the project.
+- **Try it with no credentials:** `npm run import:dry` prints exactly what would be sent.
+- **Status:** wired and demonstrable via dry-run; not yet run against a live
+  Jira / TestRail / Zephyr instance.
