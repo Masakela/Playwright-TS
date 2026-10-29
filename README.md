@@ -1,5 +1,11 @@
 # Playwright Agent Testing (TypeScript)
 
+[![CI](https://github.com/Masakela/Playwright-TS/actions/workflows/ci.yml/badge.svg)](https://github.com/Masakela/Playwright-TS/actions/workflows/ci.yml)
+[![Live KPI dashboard](https://img.shields.io/badge/KPI%20dashboard-live-0ca30c)](https://masakela.github.io/Playwright-TS/)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Masakela/Playwright-TS)
+
+**Live KPI dashboard:** https://masakela.github.io/Playwright-TS/
+
 A standalone **Playwright + TypeScript** project for **testing AI-agent-based
 workflows** - the AI agent is the *system under test*. It ships with a
 zero-dependency **reference agent** so the whole thing runs end-to-end locally and
@@ -124,3 +130,15 @@ in **INTEGRATIONS.md**; variables are listed in `.env.example`.
 - **Try it with no credentials:** `npm run import:dry` prints exactly what would be sent.
 - **Status:** wired and demonstrable via dry-run; not yet run against a live
   Jira / TestRail / Zephyr instance.
+
+## Run it in your browser — zero install
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Masakela/Playwright-TS)
+
+No local setup required. Click **Code → Codespaces → Create codespace on main**
+(or the badge above). The container installs the JDK/Node/Maven and the Playwright
+browsers automatically; when it's ready, run:
+
+```bash
+npm test
+```

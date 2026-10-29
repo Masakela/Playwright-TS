@@ -1,0 +1,10 @@
+{
+  "name": "playwright-agent-ts",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "postCreateCommand": "npm install && npx playwright install --with-deps",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-playwright.playwright", "dbaeumer.vscode-eslint"]
+    }
+  }
+}
